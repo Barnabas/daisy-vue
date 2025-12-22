@@ -1,13 +1,17 @@
 # Daisy Vue
 
 Daisy Vue is a library of component templates for Vue or Nuxt projects using [daisyUI](https://daisyui.com/), a Tailwind plugin of opinionated components.
-If you have a Vue or Nuxt project that already is configured to use daisyUI, copy the components from the src/components directory and customize them as needed.
+Copy components from the src/components directory to your project and customize them as needed.
 
-## Requirements
+## Usage
 
-* Vue >= 3.5
-* Tailwind >= 4
-* daisyUI >= 5
+These components can be used in a project that uses the following:
+
+* [Vue](https://vuejs.org/) 3.5 and newer or [Nuxt](https://nuxt.com/) 3 and newer
+* [Tailwind](https://tailwindcss.com/) 4
+* [daisyUI](https://daisyui.com/) 5
+
+Follow the instructions in the relevant documentation to install and configure.
 
 ## Demo
 
