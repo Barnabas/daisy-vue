@@ -46,4 +46,12 @@ export const COMPONENT_LIST: ComponentItem[] = [
     componentSource: `/components/Dropdown.vue`,
     demoPage: () => import('@/views/demos/DropdownDemo.vue'),
   },
+  {
+    id: 'modal',
+    label: 'Modal',
+    path: '/components/modal',
+    demoSource: '/views/demos/ModalDemo.vue',
+    componentSource: `/components/Modal.vue`,
+    demoPage: () => import('@/views/demos/ModalDemo.vue'),
+  },
 ]
