@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import type { Ref } from 'vue'
+import type { AccordionIcon } from './Accordion.vue'
 
-const props = defineProps<{
-  value: string | number
-}>()
+const ICON_CLASSES: Record<AccordionIcon, string> = {
+  arrow: 'collapse-arrow',
+  plus: 'collapse-plus',
+}
+
+const props = defineProps<{ value: string | number; title?: string }>()
 
 const AccordionRoot = inject<{
   model: Ref<(string | number)[] | string | number | undefined>
@@ -23,15 +27,7 @@ const isChecked = computed(() => {
   return AccordionRoot?.model.value === props.value
 })
 
-const iconClass = computed(() => {
-  if (AccordionRoot?.icon === 'arrow') {
-    return 'collapse-arrow'
-  }
-  if (AccordionRoot?.icon === 'plus') {
-    return 'collapse-plus'
-  }
-  return ''
-})
+const iconClass = computed(() => (AccordionRoot?.icon ? ICON_CLASSES[AccordionRoot.icon] : ''))
 </script>
 
 <template>
@@ -43,7 +39,7 @@ const iconClass = computed(() => {
       @change="() => AccordionRoot?.toggle(props.value)"
     />
     <div class="collapse-title text-xl font-medium">
-      <slot name="title" />
+      <slot name="title">{{ props.title }}</slot>
     </div>
     <div class="collapse-content">
       <slot />

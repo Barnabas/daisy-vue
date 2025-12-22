@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { provide, useId, type ModelRef } from 'vue'
 
+export type AccordionType = 'single' | 'multiple'
+
+export type AccordionIcon = 'arrow' | 'plus'
+
 type AccordionProps = {
-  type?: 'single' | 'multiple'
-  icon?: 'arrow' | 'plus'
+  type?: AccordionType
+  icon?: AccordionIcon
 }
 
 export type AccordionRoot = AccordionProps & {
