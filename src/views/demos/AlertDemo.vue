@@ -1,11 +1,10 @@
 <script setup lang="ts">
+import LayoutDemo from '@/layouts/LayoutDemo.vue'
 import Alert from '@/components/Alert.vue'
 </script>
 
 <template>
-  <section>
-    <h1>Alert</h1>
-
+  <LayoutDemo id="alert">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <Alert type="info">
         <span>This is an info alert</span>
@@ -20,5 +19,5 @@ import Alert from '@/components/Alert.vue'
         <span>This is an error alert</span>
       </Alert>
     </div>
-  </section>
+  </LayoutDemo>
 </template>

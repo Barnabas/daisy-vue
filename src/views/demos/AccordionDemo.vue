@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import LayoutDemo from '@/layouts/LayoutDemo.vue'
 import Accordion from '@/components/Accordion.vue'
 import AccordionItem from '@/components/AccordionItem.vue'
 
@@ -9,9 +10,7 @@ const plusIconValue = ref()
 </script>
 
 <template>
-  <section>
-    <h1>Accordion</h1>
-
+  <LayoutDemo id="accordion">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <div>
         <h2>Single Type (Arrow Icon)</h2>
@@ -60,5 +59,5 @@ const plusIconValue = ref()
         </Accordion>
       </div>
     </div>
-  </section>
+  </LayoutDemo>
 </template>

@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
+import { COMPONENT_LIST } from '@/utils/components'
 
-// Note: links should be in alphabetical order
-const links = [
-  { to: '/components/accordion', label: 'Accordion' },
-  { to: '/components/alert', label: 'Alert' },
-  { to: '/components/button', label: 'Button' },
-  { to: '/components/dropdown', label: 'Dropdown' },
-]
+const NAV_LINKS = COMPONENT_LIST.map(({ path, label }) => ({ to: path, label }))
 </script>
 
 <template>
@@ -27,7 +22,7 @@ const links = [
         <li class="font-bold text-primary text-xl">
           <RouterLink to="/">Daisy Vue</RouterLink>
         </li>
-        <li v-for="link in links" :key="link.to">
+        <li v-for="link in NAV_LINKS" :key="link.to">
           <RouterLink :to="link.to" activeClass="bg-neutral text-neutral-content">
             {{ link.label }}
           </RouterLink>
