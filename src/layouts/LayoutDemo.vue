@@ -8,9 +8,11 @@ const componentItem = computed(() => COMPONENT_LIST.find((item) => item.id == pr
 
 const daisyUILink = computed(() => `https://daisyui.com${componentItem.value?.path}/`)
 
-const componentSourceLink = computed(() => `${SOURCE_LINK_ROOT}${componentItem.value?.sourcePath}`)
+const componentSourceLink = computed(
+  () => `${SOURCE_LINK_ROOT}${componentItem.value?.componentSource}`,
+)
 
-const demoSourceLink = computed(() => `${SOURCE_LINK_ROOT}${componentItem.value?.demoPath}`)
+const demoSourceLink = computed(() => `${SOURCE_LINK_ROOT}${componentItem.value?.demoSource}`)
 </script>
 <template>
   <section v-if="componentItem">

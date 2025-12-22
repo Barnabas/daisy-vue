@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { COMPONENT_LIST } from '@/utils/components'
 
 const COMPONENT_ROUTES = COMPONENT_LIST.map((item) => ({
-  path: item.path,
   name: item.id,
-  component: () => import(`.${item.demoPath}`),
+  path: item.path,
+  component: item.demoPage,
 }))
 
 const router = createRouter({
