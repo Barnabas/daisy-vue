@@ -54,4 +54,12 @@ export const COMPONENT_LIST: ComponentItem[] = [
     componentSource: `/components/Modal.vue`,
     demoPage: () => import('@/views/demos/ModalDemo.vue'),
   },
+  {
+    id: 'tabs',
+    label: 'Tabs',
+    path: '/components/tab',
+    componentSource: `/components/Tabs.vue`,
+    demoSource: '/views/demos/TabsDemo.vue',
+    demoPage: () => import('@/views/demos/TabsDemo.vue'),
+  },
 ]
