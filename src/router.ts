@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { COMPONENT_LIST } from '@/utils/components'
+import { COMPONENTS } from '@/utils/components'
 
-const COMPONENT_ROUTES = COMPONENT_LIST.map((item) => ({
-  name: item.id,
+const COMPONENT_ROUTES = Object.entries(COMPONENTS).map(([id, item]) => ({
+  name: id,
   path: item.path,
   component: item.demoPage,
 }))

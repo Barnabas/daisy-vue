@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
-import { COMPONENT_LIST } from '@/utils/components'
+import { COMPONENTS } from '@/utils/components'
 
-const NAV_LINKS = COMPONENT_LIST.map(({ path, label }) => ({ to: path, label }))
+const NAV_LINKS = Object.values(COMPONENTS).map(({ path, label }) => ({ to: path, label }))
 </script>
 
 <template>

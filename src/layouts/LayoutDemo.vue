@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { COMPONENT_LIST, SOURCE_LINK_ROOT } from '@/utils/components'
+import { COMPONENTS, type ComponentId } from '@/utils/components'
 import { computed } from 'vue'
 
-const props = defineProps<{ id: string }>()
+const props = defineProps<{ id: ComponentId }>()
 
-const componentItem = computed(() => COMPONENT_LIST.find((item) => item.id == props.id))
+const SOURCE_LINK_ROOT = 'https://github.com/Barnabas/daisy-vue/blob/main/src'
+
+const componentItem = computed(() => COMPONENTS[props.id])
 
 const daisyUILink = computed(() => `https://daisyui.com${componentItem.value?.path}/`)
 
