@@ -46,6 +46,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/CardDemo.vue',
     demoPage: () => import('@/views/demos/CardDemo.vue'),
   },
+  collapse: {
+    label: 'Collapse',
+    path: '/components/collapse',
+    componentSource: `/components/UCollapse.vue`,
+    demoSource: '/views/demos/CollapseDemo.vue',
+    demoPage: () => import('@/views/demos/CollapseDemo.vue'),
+  },
   dropdown: {
     label: 'Dropdown',
     path: '/components/dropdown',
