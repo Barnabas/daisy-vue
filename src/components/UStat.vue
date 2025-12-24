@@ -10,10 +10,7 @@ type StatProps = {
 
 const props = defineProps<StatProps>()
 
-const classNames = computed(() => [
-  'stat',
-  props.centered ? 'place-items-center' : '',
-])
+const classNames = computed(() => ['stat', props.centered ? 'place-items-center' : ''])
 </script>
 
 <template>
