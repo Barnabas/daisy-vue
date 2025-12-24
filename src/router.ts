@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { COMPONENTS } from '@/utils/components'
 
 const COMPONENT_ROUTES = Object.entries(COMPONENTS).map(([id, item]) => ({
@@ -8,7 +8,8 @@ const COMPONENT_ROUTES = Object.entries(COMPONENTS).map(([id, item]) => ({
 }))
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // use web hash history because of GitHub pages
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
