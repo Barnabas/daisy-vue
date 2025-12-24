@@ -67,6 +67,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/ModalDemo.vue',
     demoPage: () => import('@/views/demos/ModalDemo.vue'),
   },
+  stat: {
+    label: 'Stat',
+    path: '/components/stat',
+    componentSource: `/components/UStat.vue`,
+    demoSource: '/views/demos/StatDemo.vue',
+    demoPage: () => import('@/views/demos/StatDemo.vue'),
+  },
   tabs: {
     label: 'Tabs',
     path: '/components/tab',
