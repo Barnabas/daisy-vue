@@ -39,6 +39,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/ButtonDemo.vue',
     demoPage: () => import('@/views/demos/ButtonDemo.vue'),
   },
+  card: {
+    label: 'Card',
+    path: '/components/card',
+    componentSource: `/components/BaseCard.vue`,
+    demoSource: '/views/demos/CardDemo.vue',
+    demoPage: () => import('@/views/demos/CardDemo.vue'),
+  },
   dropdown: {
     label: 'Dropdown',
     path: '/components/dropdown',
