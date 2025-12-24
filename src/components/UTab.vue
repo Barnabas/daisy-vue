@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject, computed } from 'vue'
-import type { TabsRoot } from './BaseTabs.vue'
+import type { TabsRoot } from './UTabs.vue'
 
 const props = defineProps<{
   value: string | number

@@ -4,15 +4,15 @@ There will eventually be at least one component here for each daisyUI component.
 
 # Code Conventions
 
-* Components should be single file components using TypeScript in the src/components directory.
+* Components should be single file components using TypeScript in the src/components directory and have the prefix "U".
 * For each component, maintain a corresponding demo page in src/views/demos and entry in src/utils/components.ts.
-* Use src/components/Accordion.vue as a component pattern and src/views/demos/AccordionDemo.vue as a demo page pattern.
+* Use src/components/UAccordion.vue as a component pattern and src/views/demos/AccordionDemo.vue as a demo page pattern.
 * You must only use daisyUI classes in components, not Tailwind utility classes. Demo pages may use Tailwind classes, however.
 * For template markup, use PascalCase for Vue components, not kebab-case.
 * In TypeScript, use upper SNAKE_CASE for constants, PascalCase for types, and camelCase for other variables and functions.
-* Prioritize using record constants rather than if statements; for example, VARIANT_CLASSES in src/components/Tabs.vue.
-* For complex nested components, create child components for the main component; for example, Tabs/TabItem or Accordion/AccordionItem.
-* For simple blocks such as the title and content of a TabItem, use named slots or default slots.
+* Prioritize using record constants rather than if statements; for example, VARIANT_CLASSES in src/components/UTabs.vue.
+* For complex nested components, create child components for the main component; for example, UTabs/UTab.
+* For simple blocks such as the title and content of a UTab, use named slots or default slots.
 
 ## Parent-Child Component Patterns
 

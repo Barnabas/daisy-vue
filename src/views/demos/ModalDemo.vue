@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import LayoutDemo from '@/layouts/LayoutDemo.vue'
-import BaseButton from '@/components/BaseButton.vue'
-import BaseModal from '@/components/BaseModal.vue'
+import UButton from '@/components/UButton.vue'
+import UModal from '@/components/UModal.vue'
 
 const modalOne = useTemplateRef('modalOne')
 const modalTwo = useTemplateRef('modalTwo')
@@ -11,23 +11,23 @@ const modalTwo = useTemplateRef('modalTwo')
 <template>
   <LayoutDemo id="modal">
     <div class="flex gap-4">
-      <BaseButton @click="modalOne?.open()">Open Modal 1 (top)</BaseButton>
-      <BaseModal ref="modalOne" title="Hello 1" placement="top">
+      <UButton @click="modalOne?.open()">Open Modal 1 (top)</UButton>
+      <UModal ref="modalOne" title="Hello 1" placement="top">
         <p class="py-4">Press ESC key or click the button below to close</p>
         <template #action>
-          <BaseButton @click="modalOne?.close()">Close</BaseButton>
+          <UButton @click="modalOne?.close()">Close</UButton>
         </template>
-      </BaseModal>
+      </UModal>
 
-      <BaseButton @click="modalTwo?.open()">Open Modal 2 (click outside)</BaseButton>
-      <BaseModal ref="modalTwo" title="Hello 2" close-on-click-outside>
+      <UButton @click="modalTwo?.open()">Open Modal 2 (click outside)</UButton>
+      <UModal ref="modalTwo" title="Hello 2" close-on-click-outside>
         <p class="py-4">
           Press ESC key, click outside the modal, or click the button below to close
         </p>
         <template #action>
-          <BaseButton @click="modalTwo?.close()">Close</BaseButton>
+          <UButton @click="modalTwo?.close()">Close</UButton>
         </template>
-      </BaseModal>
+      </UModal>
     </div>
   </LayoutDemo>
 </template>

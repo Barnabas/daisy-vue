@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import type { AccordionRoot, AccordionIcon } from './BaseAccordion.vue'
+import type { AccordionRoot, AccordionIcon } from './UAccordion.vue'
 
 const ICON_CLASSES: Record<AccordionIcon, string> = {
   arrow: 'collapse-arrow',
