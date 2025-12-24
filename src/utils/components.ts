@@ -25,6 +25,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/AlertDemo.vue',
     demoPage: () => import('@/views/demos/AlertDemo.vue'),
   },
+  badge: {
+    label: 'Badge',
+    path: '/components/badge',
+    componentSource: `/components/BaseBadge.vue`,
+    demoSource: '/views/demos/BadgeDemo.vue',
+    demoPage: () => import('@/views/demos/BadgeDemo.vue'),
+  },
   button: {
     label: 'Button',
     path: '/components/button',
