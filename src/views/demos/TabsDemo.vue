@@ -1,158 +1,138 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import LayoutDemo from '@/layouts/LayoutDemo.vue'
-import Tabs from '@/components/Tabs.vue'
-import TabItem from '@/components/TabItem.vue'
+import BaseTabs from '@/components/BaseTabs.vue'
+import BaseTabItem from '@/components/BaseTabItem.vue'
 
-const defaultTab = ref('tab1')
-const borderedTab = ref('tab1')
-const liftedTab = ref('tab2')
-const boxedTab = ref('tab3')
-const sizeTab = ref('tab1')
-const customTab = ref('tab1')
+const currentTab = ref('tab1')
 </script>
 
 <template>
   <LayoutDemo id="tabs">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
-        <h2>Default Tabs</h2>
-        <Tabs v-model="defaultTab">
-          <TabItem value="tab1" title="Tab 1">
+        <h2>Default</h2>
+        <BaseTabs v-model="currentTab">
+          <BaseTabItem value="tab1" title="Tab 1">
             <p>Content for Tab 1</p>
-          </TabItem>
-          <TabItem value="tab2" title="Tab 2">
+          </BaseTabItem>
+          <BaseTabItem value="tab2" title="Tab 2">
             <p>Content for Tab 2</p>
-          </TabItem>
-          <TabItem value="tab3" title="Tab 3">
+          </BaseTabItem>
+          <BaseTabItem value="tab3" title="Disabled" disabled>
             <p>Content for Tab 3</p>
-          </TabItem>
-        </Tabs>
+          </BaseTabItem>
+        </BaseTabs>
       </div>
 
       <div>
-        <h2>Bordered Tabs</h2>
-        <Tabs variant="bordered" v-model="borderedTab">
-          <TabItem value="tab1" title="Tab 1">
+        <h2>Bordered</h2>
+        <BaseTabs variant="bordered" v-model="currentTab">
+          <BaseTabItem value="tab1" title="Tab 1">
             <p>Content for Tab 1</p>
-          </TabItem>
-          <TabItem value="tab2" title="Tab 2">
+          </BaseTabItem>
+          <BaseTabItem value="tab2" title="Tab 2">
             <p>Content for Tab 2</p>
-          </TabItem>
-          <TabItem value="tab3" title="Tab 3">
+          </BaseTabItem>
+          <BaseTabItem value="tab3" title="Disabled" disabled>
             <p>Content for Tab 3</p>
-          </TabItem>
-        </Tabs>
+          </BaseTabItem>
+        </BaseTabs>
       </div>
 
       <div>
-        <h2>Lifted Tabs</h2>
-        <Tabs variant="lifted" v-model="liftedTab">
-          <TabItem value="tab1" title="Tab 1">
+        <h2>Lifted</h2>
+        <BaseTabs variant="lifted" v-model="currentTab">
+          <BaseTabItem value="tab1" title="Tab 1">
             <p>Content for Tab 1</p>
-          </TabItem>
-          <TabItem value="tab2" title="Tab 2">
+          </BaseTabItem>
+          <BaseTabItem value="tab2" title="Tab 2">
             <p>Content for Tab 2</p>
-          </TabItem>
-          <TabItem value="tab3" title="Tab 3">
+          </BaseTabItem>
+          <BaseTabItem value="tab3" title="Disabled" disabled>
             <p>Content for Tab 3</p>
-          </TabItem>
-        </Tabs>
+          </BaseTabItem>
+        </BaseTabs>
       </div>
 
       <div>
-        <h2>Boxed Tabs</h2>
-        <Tabs variant="boxed" v-model="boxedTab">
-          <TabItem value="tab1" title="Tab 1">
+        <h2>Boxed</h2>
+        <BaseTabs variant="boxed" v-model="currentTab">
+          <BaseTabItem value="tab1" title="Tab 1">
             <p>Content for Tab 1</p>
-          </TabItem>
-          <TabItem value="tab2" title="Tab 2">
+          </BaseTabItem>
+          <BaseTabItem value="tab2" title="Tab 2">
             <p>Content for Tab 2</p>
-          </TabItem>
-          <TabItem value="tab3" title="Tab 3">
+          </BaseTabItem>
+          <BaseTabItem value="tab3" title="Disabled" disabled>
             <p>Content for Tab 3</p>
-          </TabItem>
-        </Tabs>
+          </BaseTabItem>
+        </BaseTabs>
       </div>
 
       <div>
         <h2>Sizes</h2>
         <div class="space-y-4">
-          <Tabs size="xs" v-model="sizeTab">
-            <TabItem value="tab1" title="Extra Small">
+          <BaseTabs size="xs" v-model="currentTab">
+            <BaseTabItem value="tab1" title="Extra Small">
               <p>XS content</p>
-            </TabItem>
-            <TabItem value="tab2" title="Tab 2">
+            </BaseTabItem>
+            <BaseTabItem value="tab2" title="Tab 2">
               <p>Tab 2 content</p>
-            </TabItem>
-          </Tabs>
+            </BaseTabItem>
+          </BaseTabs>
 
-          <Tabs size="sm" v-model="sizeTab">
-            <TabItem value="tab1" title="Small">
+          <BaseTabs size="sm" v-model="currentTab">
+            <BaseTabItem value="tab1" title="Small">
               <p>SM content</p>
-            </TabItem>
-            <TabItem value="tab2" title="Tab 2">
+            </BaseTabItem>
+            <BaseTabItem value="tab2" title="Tab 2">
               <p>Tab 2 content</p>
-            </TabItem>
-          </Tabs>
+            </BaseTabItem>
+          </BaseTabs>
 
-          <Tabs size="md" v-model="sizeTab">
-            <TabItem value="tab1" title="Medium">
+          <BaseTabs size="md" v-model="currentTab">
+            <BaseTabItem value="tab1" title="Medium">
               <p>MD content</p>
-            </TabItem>
-            <TabItem value="tab2" title="Tab 2">
+            </BaseTabItem>
+            <BaseTabItem value="tab2" title="Tab 2">
               <p>Tab 2 content</p>
-            </TabItem>
-          </Tabs>
+            </BaseTabItem>
+          </BaseTabs>
 
-          <Tabs size="lg" v-model="sizeTab">
-            <TabItem value="tab1" title="Large">
+          <BaseTabs size="lg" v-model="currentTab">
+            <BaseTabItem value="tab1" title="Large">
               <p>LG content</p>
-            </TabItem>
-            <TabItem value="tab2" title="Tab 2">
+            </BaseTabItem>
+            <BaseTabItem value="tab2" title="Tab 2">
               <p>Tab 2 content</p>
-            </TabItem>
-          </Tabs>
+            </BaseTabItem>
+          </BaseTabs>
         </div>
       </div>
 
       <div>
-        <h2>With Disabled Tab</h2>
-        <Tabs v-model="defaultTab">
-          <TabItem value="tab1" title="Tab 1">
-            <p>Content for Tab 1</p>
-          </TabItem>
-          <TabItem value="tab2" title="Disabled" disabled>
-            <p>This tab is disabled</p>
-          </TabItem>
-          <TabItem value="tab3" title="Tab 3">
-            <p>Content for Tab 3</p>
-          </TabItem>
-        </Tabs>
-      </div>
-
-      <div>
         <h2>Custom Title (Slot)</h2>
-        <Tabs variant="bordered" v-model="customTab">
-          <TabItem value="tab1">
+        <BaseTabs variant="bordered" v-model="currentTab">
+          <BaseTabItem value="tab1">
             <template #title>
               <span>🏠 Home</span>
             </template>
             <p>Welcome home!</p>
-          </TabItem>
-          <TabItem value="tab2">
+          </BaseTabItem>
+          <BaseTabItem value="tab2">
             <template #title>
               <span>📄 Documents</span>
             </template>
             <p>Your documents are here.</p>
-          </TabItem>
-          <TabItem value="tab3">
+          </BaseTabItem>
+          <BaseTabItem value="tab3">
             <template #title>
               <span>⚙️ Settings</span>
             </template>
             <p>Adjust your settings.</p>
-          </TabItem>
-        </Tabs>
+          </BaseTabItem>
+        </BaseTabs>
       </div>
     </div>
   </LayoutDemo>

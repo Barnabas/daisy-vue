@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import LayoutDemo from '@/layouts/LayoutDemo.vue'
-import Button, { type ButtonColor, type ButtonSize, type ButtonKind } from '@/components/Button.vue'
+import BaseButton, {
+  type ButtonColor,
+  type ButtonSize,
+  type ButtonKind,
+} from '@/components/BaseButton.vue'
 
 const BUTTON_COLORS: ButtonColor[] = [
   'neutral',
@@ -21,15 +25,15 @@ const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg', 'xl']
   <LayoutDemo id="button">
     <div class="my-2 flex flex-wrap gap-2 items-baseline">
       <h3 class="w-24">Colors:</h3>
-      <Button v-for="color in BUTTON_COLORS" :color>{{ color }}</Button>
+      <BaseButton v-for="color in BUTTON_COLORS" :color>{{ color }}</BaseButton>
     </div>
     <div class="my-2 flex flex-wrap gap-2 items-baseline">
       <h3 class="w-24">Kinds:</h3>
-      <Button v-for="type in BUTTON_KINDS" :type>{{ type }}</Button>
+      <BaseButton v-for="type in BUTTON_KINDS" :type>{{ type }}</BaseButton>
     </div>
     <div class="my-2 flex flex-wrap gap-2 items-baseline">
       <h3 class="w-24">Sizes:</h3>
-      <Button v-for="size in BUTTON_SIZES" :size>{{ size }}</Button>
+      <BaseButton v-for="size in BUTTON_SIZES" :size>{{ size }}</BaseButton>
     </div>
   </LayoutDemo>
 </template>
