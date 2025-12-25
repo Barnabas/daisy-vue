@@ -88,6 +88,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/TabsDemo.vue',
     demoPage: () => import('@/views/demos/TabsDemo.vue'),
   },
+  tooltip: {
+    label: 'Tooltip',
+    path: '/components/tooltip',
+    componentSource: `/components/UTooltip.vue`,
+    demoSource: '/views/demos/TooltipDemo.vue',
+    demoPage: () => import('@/views/demos/TooltipDemo.vue'),
+  },
 } as const satisfies Record<string, ComponentItem>
 
 export type ComponentId = keyof typeof COMPONENTS
