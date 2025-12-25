@@ -74,6 +74,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/ListDemo.vue',
     demoPage: () => import('@/views/demos/ListDemo.vue'),
   },
+  loading: {
+    label: 'Loading',
+    path: '/components/loading',
+    componentSource: `/components/ULoading.vue`,
+    demoSource: '/views/demos/LoadingDemo.vue',
+    demoPage: () => import('@/views/demos/LoadingDemo.vue'),
+  },
   stat: {
     label: 'Stat',
     path: '/components/stat',
