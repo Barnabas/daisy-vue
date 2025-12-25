@@ -81,6 +81,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/LoadingDemo.vue',
     demoPage: () => import('@/views/demos/LoadingDemo.vue'),
   },
+  progress: {
+    label: 'Progress',
+    path: '/components/progress',
+    componentSource: `/components/UProgress.vue`,
+    demoSource: '/views/demos/ProgressDemo.vue',
+    demoPage: () => import('@/views/demos/ProgressDemo.vue'),
+  },
   stat: {
     label: 'Stat',
     path: '/components/stat',
