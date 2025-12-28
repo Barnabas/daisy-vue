@@ -109,6 +109,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/TabsDemo.vue',
     demoPage: () => import('@/views/demos/TabsDemo.vue'),
   },
+  timeline: {
+    label: 'Timeline',
+    path: '/components/timeline',
+    componentSource: `/components/UTimeline.vue`,
+    demoSource: '/views/demos/TimelineDemo.vue',
+    demoPage: () => import('@/views/demos/TimelineDemo.vue'),
+  },
   tooltip: {
     label: 'Tooltip',
     path: '/components/tooltip',
