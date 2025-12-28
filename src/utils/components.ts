@@ -266,6 +266,14 @@ export const COMPONENTS = {
     demoSource: '/views/demos/ToggleDemo.vue',
     demoPage: () => import('@/views/demos/ToggleDemo.vue'),
   },
+  join: {
+    label: 'Join',
+    path: '/components/join',
+    section: 'layout',
+    componentSource: `/components/UJoin.vue`,
+    demoSource: '/views/demos/JoinDemo.vue',
+    demoPage: () => import('@/views/demos/JoinDemo.vue'),
+  },
 } as const satisfies Record<string, ComponentItem>
 
 export type ComponentId = keyof typeof COMPONENTS

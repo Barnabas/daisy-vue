@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue'
+import { computed, inject, useAttrs } from 'vue'
 
 export type SelectColor =
   | 'neutral'
@@ -36,6 +36,8 @@ const attrs = useAttrs()
 
 const model = defineModel<string | number>()
 
+const insideJoin = inject<boolean>('insideJoin', false)
+
 const COLOR_CLASSES: Record<SelectColor, string> = {
   neutral: 'select-neutral',
   primary: 'select-primary',
@@ -61,6 +63,7 @@ const classNames = computed(() => [
   props.size ? SIZE_CLASSES[props.size] : '',
   props.ghost ? 'select-ghost' : '',
   props.validator ? 'validator' : '',
+  insideJoin ? 'join-item' : '',
 ])
 </script>
 

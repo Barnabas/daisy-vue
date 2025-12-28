@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 
 export type ButtonColor =
   | 'neutral'
@@ -25,6 +25,8 @@ type ButtonProps = {
 }
 
 const props = defineProps<ButtonProps>()
+
+const insideJoin = inject<boolean>('insideJoin', false)
 
 const COLOR_CLASSES: Record<ButtonColor, string> = {
   neutral: 'btn-neutral',
@@ -65,6 +67,7 @@ const classNames = computed(() => [
   props.type ? TYPE_CLASSES[props.type] : '',
   props.size ? SIZE_CLASSES[props.size] : '',
   props.shape ? SHAPE_CLASSES[props.shape] : '',
+  insideJoin ? 'join-item' : '',
 ])
 </script>
 

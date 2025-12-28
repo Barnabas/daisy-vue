@@ -45,6 +45,7 @@ const attrs = useAttrs()
 const model = defineModel<string | number>()
 
 const insideLabel = inject<boolean>('insideLabel', false)
+const insideJoin = inject<boolean>('insideJoin', false)
 
 const COLOR_CLASSES: Record<InputColor, string> = {
   neutral: 'input-neutral',
@@ -67,6 +68,7 @@ const SIZE_CLASSES: Record<InputSize, string> = {
 
 const classNames = computed(() => [
   insideLabel ? '' : 'input',
+  insideJoin ? 'join-item' : '',
   props.color ? COLOR_CLASSES[props.color] : '',
   props.size ? SIZE_CLASSES[props.size] : '',
   props.ghost ? 'input-ghost' : '',
