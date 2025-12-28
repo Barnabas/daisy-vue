@@ -122,6 +122,14 @@ export const COMPONENTS = {
     demoSource: '/views/demos/MenuDemo.vue',
     demoPage: () => import('@/views/demos/MenuDemo.vue'),
   },
+  steps: {
+    label: 'Steps',
+    path: '/components/steps',
+    section: 'navigation',
+    componentSource: `/components/USteps.vue`,
+    demoSource: '/views/demos/StepsDemo.vue',
+    demoPage: () => import('@/views/demos/StepsDemo.vue'),
+  },
   modal: {
     label: 'Modal',
     path: '/components/modal',
