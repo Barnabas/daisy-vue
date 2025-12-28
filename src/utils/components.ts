@@ -146,6 +146,14 @@ export const COMPONENTS = {
     demoSource: '/views/demos/ProgressDemo.vue',
     demoPage: () => import('@/views/demos/ProgressDemo.vue'),
   },
+  'radial-progress': {
+    label: 'Radial Progress',
+    path: '/components/radial-progress',
+    section: 'feedback',
+    componentSource: `/components/URadialProgress.vue`,
+    demoSource: '/views/demos/RadialProgressDemo.vue',
+    demoPage: () => import('@/views/demos/RadialProgressDemo.vue'),
+  },
   stat: {
     label: 'Stat',
     path: '/components/stat',
