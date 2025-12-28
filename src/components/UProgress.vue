@@ -32,10 +32,7 @@ const COLOR_CLASSES: Record<ProgressColor, string> = {
   error: 'progress-error',
 }
 
-const classNames = computed(() => [
-  'progress',
-  props.color ? COLOR_CLASSES[props.color] : '',
-])
+const classNames = computed(() => ['progress', props.color ? COLOR_CLASSES[props.color] : ''])
 </script>
 
 <template>

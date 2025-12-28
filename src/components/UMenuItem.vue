@@ -33,7 +33,10 @@ function toggle() {
 
 <template>
   <li v-if="collapsible" :class="itemClasses">
-    <details :open="isOpen" @toggle="(e: Event) => isOpen = (e.target as HTMLDetailsElement).open">
+    <details
+      :open="isOpen"
+      @toggle="(e: Event) => (isOpen = (e.target as HTMLDetailsElement).open)"
+    >
       <summary>
         <slot name="title">{{ title }}</slot>
       </summary>

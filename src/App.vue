@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
-import { COMPONENTS } from '@/utils/components'
+import { getComponentsBySection } from '@/utils/components'
+import UMenu from '@/components/UMenu.vue'
+import UMenuItem from '@/components/UMenuItem.vue'
 
-const NAV_LINKS = Object.values(COMPONENTS).map(({ path, label }) => ({ to: path, label }))
+const sections = getComponentsBySection()
 </script>
 
 <template>
@@ -18,16 +20,26 @@ const NAV_LINKS = Object.values(COMPONENTS).map(({ path, label }) => ({ to: path
     </div>
     <div class="drawer-side">
       <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+      <UMenu class="w-60 min-h-full">
         <li class="font-bold text-primary text-xl">
           <RouterLink to="/">Daisy Vue</RouterLink>
         </li>
-        <li v-for="link in NAV_LINKS" :key="link.to">
-          <RouterLink :to="link.to" activeClass="bg-neutral text-neutral-content">
-            {{ link.label }}
-          </RouterLink>
-        </li>
-      </ul>
+        <UMenuItem
+          v-for="section in sections"
+          :key="section.section"
+          :title="section.label"
+          collapsible
+          open
+        >
+          <UMenu>
+            <UMenuItem v-for="{ id, item } in section.components" :key="id">
+              <RouterLink :to="item.path" active-class="bg-neutral text-neutral-content">
+                {{ item.label }}
+              </RouterLink>
+            </UMenuItem>
+          </UMenu>
+        </UMenuItem>
+      </UMenu>
     </div>
   </div>
 </template>
