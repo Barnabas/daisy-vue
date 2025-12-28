@@ -290,6 +290,14 @@ export const COMPONENTS = {
     demoSource: '/views/demos/JoinDemo.vue',
     demoPage: () => import('@/views/demos/JoinDemo.vue'),
   },
+  divider: {
+    label: 'Divider',
+    path: '/components/divider',
+    section: 'layout',
+    componentSource: `/components/UDivider.vue`,
+    demoSource: '/views/demos/DividerDemo.vue',
+    demoPage: () => import('@/views/demos/DividerDemo.vue'),
+  },
 } as const satisfies Record<string, ComponentItem>
 
 export type ComponentId = keyof typeof COMPONENTS
