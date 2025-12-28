@@ -5,6 +5,8 @@ import ULoading, {
   type LoadingColor,
   type LoadingSize,
 } from '@/components/ULoading.vue'
+import UButton from '@/components/UButton.vue'
+import { ref } from 'vue'
 
 const LOADING_TYPES: LoadingType[] = ['spinner', 'dots', 'ring', 'ball', 'bars', 'infinity']
 
@@ -20,13 +22,21 @@ const LOADING_COLORS: LoadingColor[] = [
 ]
 
 const LOADING_SIZES: LoadingSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
+
+const isLoading = ref(false)
+const demoType = ref<LoadingType>('spinner')
 </script>
 
 <template>
   <LayoutDemo id="loading">
     <div class="my-2 flex flex-wrap gap-4 items-center">
       <h3 class="w-24">Types:</h3>
-      <div v-for="type in LOADING_TYPES" :key="type" class="flex flex-col items-center gap-2">
+      <div
+        v-for="type in LOADING_TYPES"
+        :key="type"
+        class="flex flex-col items-center gap-2 cursor-pointer"
+        @click="demoType = type"
+      >
         <ULoading :type />
         <span class="text-xs">{{ type }}</span>
       </div>
@@ -34,20 +44,30 @@ const LOADING_SIZES: LoadingSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
     <div class="my-2 flex flex-wrap gap-4 items-center">
       <h3 class="w-24">Colors:</h3>
       <div v-for="color in LOADING_COLORS" :key="color" class="flex flex-col items-center gap-2">
-        <ULoading :color />
+        <ULoading :color :type="demoType" />
         <span class="text-xs">{{ color }}</span>
       </div>
     </div>
     <div class="my-2 flex flex-wrap gap-4 items-center">
       <h3 class="w-24">Sizes:</h3>
       <div v-for="size in LOADING_SIZES" :key="size" class="flex flex-col items-center gap-2">
-        <ULoading :size color="primary" />
+        <ULoading :size :type="demoType" />
         <span class="text-xs">{{ size }}</span>
       </div>
     </div>
     <div class="my-2 flex flex-wrap gap-4 items-baseline">
       <h3 class="w-24">In text:</h3>
-      <p>Loading <ULoading type="spinner" size="sm" color="primary" /> please wait...</p>
+      <p>Loading <ULoading :type="demoType" size="sm" color="primary" /> please wait...</p>
+    </div>
+    <div class="my-2 flex flex-wrap gap-4 items-baseline">
+      <h3 class="w-24">In button:</h3>
+      <div>
+        <UButton v-if="isLoading" color="primary" @click="isLoading = false">
+          <ULoading :type="demoType" />
+          Loading...
+        </UButton>
+        <UButton v-else color="primary" @click="isLoading = true"> Click me </UButton>
+      </div>
     </div>
   </LayoutDemo>
 </template>
