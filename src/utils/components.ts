@@ -81,6 +81,13 @@ export const COMPONENTS = {
     demoSource: '/views/demos/LoadingDemo.vue',
     demoPage: () => import('@/views/demos/LoadingDemo.vue'),
   },
+  menu: {
+    label: 'Menu',
+    path: '/components/menu',
+    componentSource: `/components/UMenu.vue`,
+    demoSource: '/views/demos/MenuDemo.vue',
+    demoPage: () => import('@/views/demos/MenuDemo.vue'),
+  },
   progress: {
     label: 'Progress',
     path: '/components/progress',
