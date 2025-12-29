@@ -1,27 +1,42 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { RouterView, RouterLink } from 'vue-router'
 import { getComponentsBySection } from '@/utils/components'
+import UDrawer from '@/components/UDrawer.vue'
 import UMenu from '@/components/UMenu.vue'
 import UMenuItem from '@/components/UMenuItem.vue'
+import UButton from '@/components/UButton.vue'
 
 const sections = getComponentsBySection()
+const drawerOpen = ref(false)
 </script>
 
 <template>
-  <div class="drawer lg:drawer-open">
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col">
-      <div class="w-full flex justify-end p-2 lg:hidden">
-        <label for="my-drawer-2" class="btn btn-primary drawer-button">Open drawer</label>
-      </div>
-      <main class="p-4">
-        <RouterView />
-      </main>
+  <UDrawer v-model="drawerOpen" class="lg:drawer-open" sidebar-class="bg-base-200 w-60">
+    <div class="lg:hidden flex gap-4 p-2">
+      <UButton size="sm" @click="drawerOpen = true" aria-label="Open drawer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="inline-block stroke-current size-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </UButton>
+      <RouterLink class="font-bold text-primary text-3xl" to="/">Daisy Vue</RouterLink>
     </div>
-    <div class="drawer-side">
-      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-      <UMenu class="w-60 min-h-full">
-        <li class="font-bold text-primary text-xl">
+    <main class="p-4">
+      <RouterView />
+    </main>
+    <template #side>
+      <UMenu class="min-h-full w-full">
+        <li class="font-bold text-primary text-xl hidden lg:block">
           <RouterLink to="/">Daisy Vue</RouterLink>
         </li>
         <UMenuItem
@@ -31,7 +46,7 @@ const sections = getComponentsBySection()
           collapsible
           open
         >
-          <UMenu>
+          <UMenu class="w-52">
             <UMenuItem v-for="{ id, item } in section.components" :key="id">
               <RouterLink :to="item.path" active-class="bg-neutral text-neutral-content">
                 {{ item.label }}
@@ -40,6 +55,6 @@ const sections = getComponentsBySection()
           </UMenu>
         </UMenuItem>
       </UMenu>
-    </div>
-  </div>
+    </template>
+  </UDrawer>
 </template>

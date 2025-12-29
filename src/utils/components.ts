@@ -298,6 +298,14 @@ export const COMPONENTS = {
     demoSource: '/views/demos/DividerDemo.vue',
     demoPage: () => import('@/views/demos/DividerDemo.vue'),
   },
+  drawer: {
+    label: 'Drawer',
+    path: '/components/drawer',
+    section: 'layout',
+    componentSource: `/components/UDrawer.vue`,
+    demoSource: '/views/demos/DrawerDemo.vue',
+    demoPage: () => import('@/views/demos/DrawerDemo.vue'),
+  },
 } as const satisfies Record<string, ComponentItem>
 
 export type ComponentId = keyof typeof COMPONENTS
@@ -310,7 +318,10 @@ export function getComponentsBySection() {
     grouped.set(section, [])
   }
 
-  for (const [id, item] of Object.entries(COMPONENTS) as [ComponentId, ComponentItem][]) {
+  const componentsList = Array.from(Object.entries(COMPONENTS))
+  componentsList.sort(([id1], [id2]) => id1.localeCompare(id2))
+
+  for (const [id, item] of componentsList as [ComponentId, ComponentItem][]) {
     const section = item.section
     grouped.get(section)?.push({ id, item })
   }
@@ -320,7 +331,7 @@ export function getComponentsBySection() {
     (section) => ({
       section,
       label: SECTION_LABELS[section],
-      components: grouped.get(section)!,
+      components: grouped.get(section),
     }),
   )
 }
