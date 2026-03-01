@@ -16,10 +16,7 @@ export type AccordionRoot = AccordionProps & {
   accordionInputName: string
 }
 
-const props = withDefaults(defineProps<AccordionProps>(), {
-  type: 'single',
-  icon: 'arrow',
-})
+const { type = 'single', icon = 'arrow' } = defineProps<AccordionProps>()
 
 const model = defineModel<(string | number)[] | string | number>()
 
@@ -27,7 +24,7 @@ const model = defineModel<(string | number)[] | string | number>()
 const accordionInputName = useId()
 
 function toggle(value: string | number) {
-  if (props.type === 'multiple') {
+  if (type === 'multiple') {
     const newValue = [...(Array.isArray(model.value) ? model.value : [])]
     if (newValue.includes(value)) {
       newValue.splice(newValue.indexOf(value), 1)
@@ -41,8 +38,8 @@ function toggle(value: string | number) {
 }
 
 provide('AccordionRoot', {
-  type: props.type,
-  icon: props.icon,
+  type,
+  icon,
   model,
   toggle,
   accordionInputName,

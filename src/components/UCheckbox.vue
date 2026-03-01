@@ -2,13 +2,13 @@
 import { computed, useAttrs } from 'vue'
 
 export type CheckboxColor =
+  | 'neutral'
   | 'primary'
   | 'secondary'
   | 'accent'
-  | 'neutral'
+  | 'info'
   | 'success'
   | 'warning'
-  | 'info'
   | 'error'
 
 export type CheckboxSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -22,19 +22,19 @@ type CheckboxProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<CheckboxProps>()
+const { color, size, validator, validatorHint } = defineProps<CheckboxProps>()
 const attrs = useAttrs()
 
 const model = defineModel<boolean>()
 
 const COLOR_CLASSES: Record<CheckboxColor, string> = {
+  neutral: 'checkbox-neutral',
   primary: 'checkbox-primary',
   secondary: 'checkbox-secondary',
   accent: 'checkbox-accent',
-  neutral: 'checkbox-neutral',
+  info: 'checkbox-info',
   success: 'checkbox-success',
   warning: 'checkbox-warning',
-  info: 'checkbox-info',
   error: 'checkbox-error',
 }
 
@@ -48,9 +48,9 @@ const SIZE_CLASSES: Record<CheckboxSize, string> = {
 
 const classNames = computed(() => [
   'checkbox',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.validator ? 'validator' : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
+  validator ? 'validator' : '',
 ])
 </script>
 

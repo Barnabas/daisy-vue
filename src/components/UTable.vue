@@ -18,16 +18,16 @@ const SIZE_CLASSES: Record<TableSize, string> = {
   xl: 'table-xl',
 }
 
-const props = defineProps<TableProps>()
+const { zebra, pinRows, pinCols, size } = defineProps<TableProps>()
 
 const tableClasses = computed(() => [
   'table',
   {
-    'table-zebra': props.zebra,
-    'table-pin-rows': props.pinRows,
-    'table-pin-cols': props.pinCols,
+    'table-zebra': zebra,
+    'table-pin-rows': pinRows,
+    'table-pin-cols': pinCols,
   },
-  props.size ? SIZE_CLASSES[props.size] : '',
+  size ? SIZE_CLASSES[size] : '',
 ])
 </script>
 

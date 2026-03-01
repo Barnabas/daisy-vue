@@ -8,9 +8,9 @@ type StatProps = {
   centered?: boolean
 }
 
-const props = defineProps<StatProps>()
+const { title, value, desc, centered } = defineProps<StatProps>()
 
-const classNames = computed(() => ['stat', props.centered ? 'place-items-center' : ''])
+const classNames = computed(() => ['stat', centered ? 'place-items-center' : ''])
 </script>
 
 <template>

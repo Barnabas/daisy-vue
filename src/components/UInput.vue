@@ -37,9 +37,7 @@ type InputProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = withDefaults(defineProps<InputProps>(), {
-  type: 'text',
-})
+const { type = 'text', placeholder, color, size, ghost, validator, validatorHint } = defineProps<InputProps>()
 const attrs = useAttrs()
 
 const model = defineModel<string | number>()
@@ -69,10 +67,10 @@ const SIZE_CLASSES: Record<InputSize, string> = {
 const classNames = computed(() => [
   insideLabel ? '' : 'input',
   insideJoin ? 'join-item' : '',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.ghost ? 'input-ghost' : '',
-  props.validator ? 'validator' : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
+  ghost ? 'input-ghost' : '',
+  validator ? 'validator' : '',
 ])
 </script>
 

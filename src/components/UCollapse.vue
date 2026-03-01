@@ -16,18 +16,16 @@ const ICON_CLASSES: Record<CollapseIcon, string> = {
   plus: 'collapse-plus',
 }
 
-const props = withDefaults(defineProps<CollapseProps>(), {
-  focus: false,
-})
+const { title, focus = false, icon, open, closed } = defineProps<CollapseProps>()
 
 const classNames = computed(() => [
   'collapse',
   'bg-base-100',
   'border',
   'border-base-300',
-  props.icon ? ICON_CLASSES[props.icon] : '',
-  props.open ? 'collapse-open' : '',
-  props.closed ? 'collapse-close' : '',
+  icon ? ICON_CLASSES[icon] : '',
+  open ? 'collapse-open' : '',
+  closed ? 'collapse-close' : '',
 ])
 </script>
 

@@ -24,7 +24,7 @@ type TextareaProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<TextareaProps>()
+const { placeholder, color, size, ghost, validator, validatorHint } = defineProps<TextareaProps>()
 const attrs = useAttrs()
 
 const model = defineModel<string>()
@@ -50,10 +50,10 @@ const SIZE_CLASSES: Record<TextareaSize, string> = {
 
 const classNames = computed(() => [
   'textarea',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.ghost ? 'textarea-ghost' : '',
-  props.validator ? 'validator' : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
+  ghost ? 'textarea-ghost' : '',
+  validator ? 'validator' : '',
 ])
 </script>
 

@@ -7,15 +7,15 @@ const ICON_CLASSES: Record<AccordionIcon, string> = {
   plus: 'collapse-plus',
 }
 
-const props = defineProps<{ value: string | number; title?: string }>()
+const { value, title } = defineProps<{ value: string | number; title?: string }>()
 
 const root = inject<AccordionRoot>('AccordionRoot')
 
 const isChecked = computed(() => {
   if (root?.type === 'multiple') {
-    return Array.isArray(root.model.value) && root.model.value.includes(props.value)
+    return Array.isArray(root.model.value) && root.model.value.includes(value)
   }
-  return root?.model.value === props.value
+  return root?.model.value === value
 })
 
 const iconClass = computed(() => (root?.icon ? ICON_CLASSES[root.icon] : ''))
@@ -27,10 +27,10 @@ const iconClass = computed(() => (root?.icon ? ICON_CLASSES[root.icon] : ''))
       :type="root?.type === 'single' ? 'radio' : 'checkbox'"
       :name="root?.accordionInputName"
       :checked="isChecked"
-      @change="() => root?.toggle(props.value)"
+      @change="() => root?.toggle(value)"
     />
     <div class="collapse-title text-xl font-medium">
-      <slot name="title">{{ props.title }}</slot>
+      <slot name="title">{{ title }}</slot>
     </div>
     <div class="collapse-content">
       <slot />

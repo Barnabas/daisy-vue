@@ -23,10 +23,7 @@ type RangeProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = withDefaults(defineProps<RangeProps>(), {
-  min: 0,
-  max: 100,
-})
+const { min = 0, max = 100, step, color, size } = defineProps<RangeProps>()
 const attrs = useAttrs()
 
 const model = defineModel<number>()
@@ -52,8 +49,8 @@ const SIZE_CLASSES: Record<RangeSize, string> = {
 
 const classNames = computed(() => [
   'range',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
 ])
 </script>
 

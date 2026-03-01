@@ -24,15 +24,15 @@ type CardProps = {
   imageFull?: boolean
 }
 
-const props = defineProps<CardProps>()
+const { size, border, side, imageFull } = defineProps<CardProps>()
 
 const classNames = computed(() => [
   'card',
   'bg-base-100',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.border ? BORDER_CLASSES[props.border] : '',
-  props.side ? 'card-side' : '',
-  props.imageFull ? 'image-full' : '',
+  size ? SIZE_CLASSES[size] : '',
+  border ? BORDER_CLASSES[border] : '',
+  side ? 'card-side' : '',
+  imageFull ? 'image-full' : '',
 ])
 </script>
 

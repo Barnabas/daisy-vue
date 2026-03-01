@@ -2,13 +2,13 @@
 import { computed, useAttrs } from 'vue'
 
 export type ToggleColor =
+  | 'neutral'
   | 'primary'
   | 'secondary'
   | 'accent'
-  | 'neutral'
+  | 'info'
   | 'success'
   | 'warning'
-  | 'info'
   | 'error'
 
 export type ToggleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -22,19 +22,19 @@ type ToggleProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<ToggleProps>()
+const { color, size, validator, validatorHint } = defineProps<ToggleProps>()
 const attrs = useAttrs()
 
 const model = defineModel<boolean>()
 
 const COLOR_CLASSES: Record<ToggleColor, string> = {
+  neutral: 'toggle-neutral',
   primary: 'toggle-primary',
   secondary: 'toggle-secondary',
   accent: 'toggle-accent',
-  neutral: 'toggle-neutral',
+  info: 'toggle-info',
   success: 'toggle-success',
   warning: 'toggle-warning',
-  info: 'toggle-info',
   error: 'toggle-error',
 }
 
@@ -48,9 +48,9 @@ const SIZE_CLASSES: Record<ToggleSize, string> = {
 
 const classNames = computed(() => [
   'toggle',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.validator ? 'validator' : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
+  validator ? 'validator' : '',
 ])
 </script>
 

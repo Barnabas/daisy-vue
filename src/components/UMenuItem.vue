@@ -10,24 +10,22 @@ type MenuItemProps = {
   open?: boolean
 }
 
-const props = withDefaults(defineProps<MenuItemProps>(), {
-  disabled: false,
-  active: false,
-  focus: false,
-  collapsible: false,
-  open: false,
-})
+const { disabled = false, active = false, focus = false, collapsible = false, open = false, title } = defineProps<MenuItemProps>()
 
-const isOpen = ref(props.open)
+const isOpen = ref(open)
 
 const itemClasses = computed(() => [
-  props.disabled ? 'menu-disabled' : '',
-  props.active ? 'menu-active' : '',
-  props.focus ? 'menu-focus' : '',
+  disabled ? 'menu-disabled' : '',
+  active ? 'menu-active' : '',
+  focus ? 'menu-focus' : '',
 ])
 
 function toggle() {
   isOpen.value = !isOpen.value
+}
+
+function handleToggle(e: Event) {
+  isOpen.value = (e.target as HTMLDetailsElement).open
 }
 </script>
 
@@ -35,7 +33,7 @@ function toggle() {
   <li v-if="collapsible" :class="itemClasses">
     <details
       :open="isOpen"
-      @toggle="(e: Event) => (isOpen = (e.target as HTMLDetailsElement).open)"
+      @toggle="handleToggle"
     >
       <summary>
         <slot name="title">{{ title }}</slot>

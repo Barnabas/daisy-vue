@@ -4,7 +4,7 @@ type FieldsetProps = {
   description?: string
 }
 
-defineProps<FieldsetProps>()
+const { legend, description } = defineProps<FieldsetProps>()
 </script>
 
 <template>

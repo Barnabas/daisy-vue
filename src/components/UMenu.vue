@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 export type MenuSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-export type MenuDirection = 'vertical' | 'horizontal'
+export type MenuDirection = 'vertical' | 'horizontal' | 'responsive'
 
 type MenuProps = {
   title?: string
@@ -22,20 +22,21 @@ const SIZE_CLASSES: Record<MenuSize, string> = {
 const DIRECTION_CLASSES: Record<MenuDirection, string> = {
   vertical: 'menu-vertical',
   horizontal: 'menu-horizontal',
+  responsive: 'menu-vertical lg:menu-horizontal',
 }
 
-const props = defineProps<MenuProps>()
+const { title, size, direction, class: extraClass } = defineProps<MenuProps>()
 
 const classNames = computed(() => [
   'menu',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.direction ? DIRECTION_CLASSES[props.direction] : '',
-  props.class,
+  size ? SIZE_CLASSES[size] : '',
+  direction ? DIRECTION_CLASSES[direction] : '',
+  extraClass,
 ])
 </script>
 
 <template>
-  <ul :class="classNames">
+  <ul :class="classNames" role="menu">
     <li v-if="title" class="menu-title">{{ title }}</li>
     <slot />
   </ul>

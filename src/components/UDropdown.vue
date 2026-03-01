@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, useTemplateRef } from 'vue'
+import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
 export type DropdownPlacement = 'start' | 'center' | 'end' | 'left' | 'right'
 
@@ -19,14 +19,14 @@ const PLACEMENT_CLASSES: Record<DropdownPlacement, string> = {
   right: 'dropdown-right',
 }
 
-const props = defineProps<DropdownProps>()
+const { placement, direction, title } = defineProps<DropdownProps>()
 
 const detailsEl = useTemplateRef('details')
 
 const classNames = computed(() => [
   'dropdown',
-  props.placement ? PLACEMENT_CLASSES[props.placement] : '',
-  props.direction === 'top' ? 'dropdown-top' : 'dropdown-bottom',
+  placement ? PLACEMENT_CLASSES[placement] : '',
+  direction === 'top' ? 'dropdown-top' : 'dropdown-bottom',
 ])
 
 function onBodyClick() {
@@ -41,15 +41,26 @@ function handleToggle(e: ToggleEvent) {
   }
 }
 
+function onKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape' && detailsEl.value?.hasAttribute('open')) {
+    detailsEl.value.removeAttribute('open')
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', onKeydown)
+})
+
 onBeforeUnmount(() => {
   document.body.removeEventListener('click', onBodyClick)
+  document.removeEventListener('keydown', onKeydown)
 })
 </script>
 
 <template>
   <details ref="details" :class="classNames" @toggle="handleToggle">
     <summary class="btn m-1">
-      <slot name="trigger">{{ props.title }}</slot>
+      <slot name="trigger">{{ title }}</slot>
     </summary>
     <ul class="dropdown-content menu bg-base-100 w-52 rounded-box z-1 shadow-sm">
       <slot />

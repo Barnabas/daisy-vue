@@ -7,7 +7,7 @@ type JoinProps = {
   direction?: JoinDirection
 }
 
-const props = defineProps<JoinProps>()
+const { direction } = defineProps<JoinProps>()
 
 const DIRECTION_CLASSES: Record<JoinDirection, string> = {
   horizontal: 'join-horizontal',
@@ -16,7 +16,7 @@ const DIRECTION_CLASSES: Record<JoinDirection, string> = {
 
 const classNames = computed(() => [
   'join',
-  props.direction ? DIRECTION_CLASSES[props.direction] : '',
+  direction ? DIRECTION_CLASSES[direction] : '',
 ])
 
 provide('insideJoin', true)

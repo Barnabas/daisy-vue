@@ -23,7 +23,7 @@ type FileInputProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<FileInputProps>()
+const { color, size, ghost, validator, validatorHint } = defineProps<FileInputProps>()
 const attrs = useAttrs()
 
 const model = defineModel<FileList | null>()
@@ -49,10 +49,10 @@ const SIZE_CLASSES: Record<FileInputSize, string> = {
 
 const classNames = computed(() => [
   'file-input',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.ghost ? 'file-input-ghost' : '',
-  props.validator ? 'validator' : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
+  ghost ? 'file-input-ghost' : '',
+  validator ? 'validator' : '',
 ])
 
 function handleChange(event: Event) {

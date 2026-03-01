@@ -8,11 +8,11 @@ type DrawerProps = {
   sidebarClass?: string
 }
 
-const props = defineProps<DrawerProps>()
+const { placement, sidebarClass } = defineProps<DrawerProps>()
 
 const model = defineModel<boolean>({ default: false })
 
-const classNames = computed(() => ['drawer', props.placement === 'end' ? 'drawer-end' : ''])
+const classNames = computed(() => ['drawer', placement === 'end' ? 'drawer-end' : ''])
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const classNames = computed(() => ['drawer', props.placement === 'end' ? 'drawer
     </div>
     <div class="drawer-side">
       <label class="drawer-overlay" @click="model = false"></label>
-      <div :class="['min-h-full', props.sidebarClass]">
+      <div :class="['min-h-full', sidebarClass]">
         <slot name="side" />
       </div>
     </div>

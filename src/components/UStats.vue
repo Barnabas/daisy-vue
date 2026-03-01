@@ -7,17 +7,14 @@ type StatsProps = {
   direction?: StatsDirection
 }
 
-const props = withDefaults(defineProps<StatsProps>(), {
-  direction: 'horizontal',
-  shadow: false,
-})
+const { direction = 'horizontal' } = defineProps<StatsProps>()
 
 const classNames = computed(() => {
   const classes = ['stats', 'shadow']
 
-  if (props.direction === 'vertical') {
+  if (direction === 'vertical') {
     classes.push('stats-vertical')
-  } else if (props.direction === 'responsive') {
+  } else if (direction === 'responsive') {
     classes.push('stats-vertical', 'lg:stats-horizontal')
   }
 

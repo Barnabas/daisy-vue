@@ -21,7 +21,7 @@ type BadgeProps = {
   size?: BadgeSize
 }
 
-const props = defineProps<BadgeProps>()
+const { color, variant, size } = defineProps<BadgeProps>()
 
 const COLOR_CLASSES: Record<BadgeColor, string> = {
   neutral: 'badge-neutral',
@@ -51,9 +51,9 @@ const SIZE_CLASSES: Record<BadgeSize, string> = {
 
 const classNames = computed(() => [
   'badge',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.variant ? VARIANT_CLASSES[props.variant] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
+  color ? COLOR_CLASSES[color] : '',
+  variant ? VARIANT_CLASSES[variant] : '',
+  size ? SIZE_CLASSES[size] : '',
 ])
 </script>
 

@@ -6,9 +6,9 @@ export type RadioColor =
   | 'primary'
   | 'secondary'
   | 'accent'
+  | 'info'
   | 'success'
   | 'warning'
-  | 'info'
   | 'error'
 
 export type RadioSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -20,7 +20,7 @@ type RadioProps = {
   size?: RadioSize
 }
 
-const props = defineProps<RadioProps>()
+const { name, value, color, size } = defineProps<RadioProps>()
 
 const model = defineModel<string | number | boolean>()
 
@@ -29,9 +29,9 @@ const COLOR_CLASSES: Record<RadioColor, string> = {
   primary: 'radio-primary',
   secondary: 'radio-secondary',
   accent: 'radio-accent',
+  info: 'radio-info',
   success: 'radio-success',
   warning: 'radio-warning',
-  info: 'radio-info',
   error: 'radio-error',
 }
 
@@ -45,8 +45,8 @@ const SIZE_CLASSES: Record<RadioSize, string> = {
 
 const classNames = computed(() => [
   'radio',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
 ])
 </script>
 

@@ -31,7 +31,7 @@ type SelectProps = {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<SelectProps>()
+const { options, placeholder, color, size, ghost, validator, validatorHint } = defineProps<SelectProps>()
 const attrs = useAttrs()
 
 const model = defineModel<string | number>()
@@ -59,10 +59,10 @@ const SIZE_CLASSES: Record<SelectSize, string> = {
 
 const classNames = computed(() => [
   'select',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.ghost ? 'select-ghost' : '',
-  props.validator ? 'validator' : '',
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
+  ghost ? 'select-ghost' : '',
+  validator ? 'validator' : '',
   insideJoin ? 'join-item' : '',
 ])
 </script>

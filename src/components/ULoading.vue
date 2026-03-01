@@ -4,10 +4,10 @@ import { computed } from 'vue'
 export type LoadingType = 'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'
 
 export type LoadingColor =
+  | 'neutral'
   | 'primary'
   | 'secondary'
   | 'accent'
-  | 'neutral'
   | 'info'
   | 'success'
   | 'warning'
@@ -21,9 +21,7 @@ type LoadingProps = {
   size?: LoadingSize
 }
 
-const props = withDefaults(defineProps<LoadingProps>(), {
-  type: 'spinner',
-})
+const { type = 'spinner', color, size } = defineProps<LoadingProps>()
 
 const TYPE_CLASSES: Record<LoadingType, string> = {
   spinner: 'loading-spinner',
@@ -35,10 +33,10 @@ const TYPE_CLASSES: Record<LoadingType, string> = {
 }
 
 const COLOR_CLASSES: Record<LoadingColor, string> = {
+  neutral: 'text-neutral',
   primary: 'text-primary',
   secondary: 'text-secondary',
   accent: 'text-accent',
-  neutral: 'text-neutral',
   info: 'text-info',
   success: 'text-success',
   warning: 'text-warning',
@@ -55,12 +53,12 @@ const SIZE_CLASSES: Record<LoadingSize, string> = {
 
 const classNames = computed(() => [
   'loading',
-  TYPE_CLASSES[props.type],
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
+  TYPE_CLASSES[type],
+  color ? COLOR_CLASSES[color] : '',
+  size ? SIZE_CLASSES[size] : '',
 ])
 </script>
 
 <template>
-  <span :class="classNames"></span>
+  <span :class="classNames" role="status" aria-label="Loading"></span>
 </template>

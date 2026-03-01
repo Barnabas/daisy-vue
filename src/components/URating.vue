@@ -28,11 +28,7 @@ type RatingProps = {
   hidden?: boolean
 }
 
-const props = withDefaults(defineProps<RatingProps>(), {
-  size: 'md',
-  count: 5,
-  mask: 'star',
-})
+const { name, count = 5, size = 'md', mask = 'star', half, hidden } = defineProps<RatingProps>()
 
 const model = defineModel<number>()
 
@@ -63,19 +59,19 @@ const MASK_CLASSES: Record<RatingMask, string> = {
 
 const ratingClassNames = computed(() => [
   'rating',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.half ? 'rating-half' : '',
+  size ? SIZE_CLASSES[size] : '',
+  half ? 'rating-half' : '',
 ])
 
 function maskClass(i: number): string[] {
-  const classes = ['mask', MASK_CLASSES[props.mask]]
-  if (props.half) {
+  const classes = ['mask', MASK_CLASSES[mask]]
+  if (half) {
     classes.push(i % 2 === 1 ? 'mask-half-1' : 'mask-half-2')
   }
   return classes
 }
 
-const inputCount = computed(() => (props.half ? props.count * 2 : props.count))
+const inputCount = computed(() => (half ? count * 2 : count))
 </script>
 
 <template>

@@ -20,7 +20,7 @@ type TooltipProps = {
   open?: boolean
 }
 
-const props = defineProps<TooltipProps>()
+const { title, color, position, open } = defineProps<TooltipProps>()
 
 const COLOR_CLASSES: Record<TooltipColor, string> = {
   neutral: 'tooltip-neutral',
@@ -42,14 +42,14 @@ const POSITION_CLASSES: Record<TooltipPosition, string> = {
 
 const classNames = computed(() => [
   'tooltip',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.position ? POSITION_CLASSES[props.position] : '',
-  props.open ? 'tooltip-open' : '',
+  color ? COLOR_CLASSES[color] : '',
+  position ? POSITION_CLASSES[position] : '',
+  open ? 'tooltip-open' : '',
 ])
 </script>
 
 <template>
-  <div :class="classNames" :data-tip="title">
+  <div :class="classNames" :data-tip="title" :aria-label="title">
     <slot />
     <div v-if="$slots.title" class="tooltip-content">
       <slot name="title" />

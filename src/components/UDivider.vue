@@ -21,7 +21,7 @@ type DividerProps = {
   placement?: DividerPlacement
 }
 
-const props = defineProps<DividerProps>()
+const { color, direction, placement } = defineProps<DividerProps>()
 
 const COLOR_CLASSES: Record<DividerColor, string> = {
   neutral: 'divider-neutral',
@@ -46,9 +46,9 @@ const PLACEMENT_CLASSES: Record<DividerPlacement, string> = {
 
 const classNames = computed(() => [
   'divider',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.direction ? DIRECTION_CLASSES[props.direction] : '',
-  props.placement ? PLACEMENT_CLASSES[props.placement] : '',
+  color ? COLOR_CLASSES[color] : '',
+  direction ? DIRECTION_CLASSES[direction] : '',
+  placement ? PLACEMENT_CLASSES[placement] : '',
 ])
 </script>
 

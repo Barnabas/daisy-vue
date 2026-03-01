@@ -17,9 +17,7 @@ type ProgressProps = {
   color?: ProgressColor
 }
 
-const props = withDefaults(defineProps<ProgressProps>(), {
-  max: 100,
-})
+const { value, max = 100, color } = defineProps<ProgressProps>()
 
 const COLOR_CLASSES: Record<ProgressColor, string> = {
   primary: 'progress-primary',
@@ -32,7 +30,7 @@ const COLOR_CLASSES: Record<ProgressColor, string> = {
   error: 'progress-error',
 }
 
-const classNames = computed(() => ['progress', props.color ? COLOR_CLASSES[props.color] : ''])
+const classNames = computed(() => ['progress', color ? COLOR_CLASSES[color] : ''])
 </script>
 
 <template>

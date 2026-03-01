@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, useAttrs } from 'vue'
 
 export type ButtonColor =
   | 'neutral'
@@ -24,7 +24,10 @@ type ButtonProps = {
   shape?: ButtonShape
 }
 
-const props = defineProps<ButtonProps>()
+defineOptions({ inheritAttrs: false })
+
+const { color, type, size, shape } = defineProps<ButtonProps>()
+const attrs = useAttrs()
 
 const insideJoin = inject<boolean>('insideJoin', false)
 
@@ -63,16 +66,16 @@ const SHAPE_CLASSES: Record<ButtonShape, string> = {
 
 const classNames = computed(() => [
   'btn',
-  props.color ? COLOR_CLASSES[props.color] : '',
-  props.type ? TYPE_CLASSES[props.type] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
-  props.shape ? SHAPE_CLASSES[props.shape] : '',
+  color ? COLOR_CLASSES[color] : '',
+  type ? TYPE_CLASSES[type] : '',
+  size ? SIZE_CLASSES[size] : '',
+  shape ? SHAPE_CLASSES[shape] : '',
   insideJoin ? 'join-item' : '',
 ])
 </script>
 
 <template>
-  <button :class="classNames">
+  <button :class="classNames" v-bind="attrs">
     <slot />
   </button>
 </template>

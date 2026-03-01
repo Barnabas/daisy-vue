@@ -5,13 +5,11 @@ type TimelineItemProps = {
   box?: boolean
 }
 
-const props = withDefaults(defineProps<TimelineItemProps>(), {
-  box: false,
-})
+const { box = false } = defineProps<TimelineItemProps>()
 
 const endClassNames = computed(() => {
   const classes = ['timeline-end']
-  if (props.box) {
+  if (box) {
     classes.push('timeline-box')
   }
   return classes

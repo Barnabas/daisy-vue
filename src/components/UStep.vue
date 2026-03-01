@@ -27,13 +27,13 @@ const COLOR_CLASSES: Record<StepColor, string> = {
   error: 'step-error',
 }
 
-const props = defineProps<StepProps>()
+const { color, content } = defineProps<StepProps>()
 
 const classNames = computed(() => {
   const classes = ['step']
 
-  if (props.color) {
-    classes.push(COLOR_CLASSES[props.color])
+  if (color) {
+    classes.push(COLOR_CLASSES[color])
   }
 
   return classes

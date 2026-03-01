@@ -27,7 +27,7 @@ export type TabsRoot = TabsProps & {
   tabsInputName: string
 }
 
-const props = defineProps<TabsProps>()
+const { variant, size } = defineProps<TabsProps>()
 
 const model = defineModel<string | number>()
 
@@ -36,13 +36,13 @@ const tabsInputName = useId()
 
 const classNames = computed(() => [
   'tabs',
-  props.variant ? VARIANT_CLASSES[props.variant] : '',
-  props.size ? SIZE_CLASSES[props.size] : '',
+  variant ? VARIANT_CLASSES[variant] : '',
+  size ? SIZE_CLASSES[size] : '',
 ])
 
 provide('TabsRoot', {
-  variant: props.variant,
-  size: props.size,
+  variant,
+  size,
   model,
   tabsInputName,
 })
